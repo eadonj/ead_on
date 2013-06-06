@@ -8,7 +8,7 @@ $(document).ready(function() {
   //   });
   // }));
 
- $("form").on("submit", function(e){
+ $(".url_form").on("submit", function(e){
     e.preventDefault();
     var request = $.ajax({
         method: "POST",
@@ -21,7 +21,7 @@ $(document).ready(function() {
        $(".url_container").append(response); 
       } else
       {
-        $(".url_container").append('http://localhost:9393/' + response['url']['shortened_url']);
+        $(".url_container").append('http://localhost:9393/urls/' + response['url']['shortened_url']);
       }
     }); //for done
   }); // for form

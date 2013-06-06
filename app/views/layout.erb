@@ -20,6 +20,13 @@
   <title></title>
 </head>
 <body>
+  <a href='/'>home</a>
+  <% unless authenticated? %>
+    <a href='/login'>login</a>
+  <% end %>
+  <% unless request.path_info == '/users/new' || authenticated? %>
+      <a href='/users/new'>signup</a>
+  <% end %>
   <%= yield %>
 </body>
 </html>
