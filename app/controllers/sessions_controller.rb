@@ -7,9 +7,8 @@ post '/login' do
   if User.authenticate(params[:user][:email], params[:user][:password])
     session[:user_id] = @user.id
     erb :profile
-  else
-    erb :index
   end
+  erb :login
 end
 
 get '/logout' do

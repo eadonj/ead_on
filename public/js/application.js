@@ -38,6 +38,7 @@ $('.login-link').on('click', function(e){
     method: 'get',
     url: '/login'
   }).done(function(response){
+    // console.log(response)
     $('.navbar').remove();
     $('.page-container').replaceWith(response);
   });
@@ -47,15 +48,21 @@ $('.login-link').on('click', function(e){
 $('.login-form').on('submit', function(e){
   e.preventDefault();
   var request = $.ajax({
-    method: 'post', 
+    method: 'post',
     url: '/login',
-    data: $(this).serialize()
-  }).done(function(response){
+    data: $(this).serialize(),
+    fail: (function(){
+      $('.navbar').remove();
+      $('.page-container').replaceWith(response);
+      $('.messages').append('Sorry something went wrong');
+    })
+  }).success(function(response){
     $('.navbar').remove();
     $('.page-container').replaceWith(response);
     $('.messages').append('Welcome back!');
-    $('.messages').children().fadeOut();
-  });
+    $('.messages').fadeOut(2000);
+    }
+    );
 });
 
 // log out single pagey
@@ -82,10 +89,6 @@ $('.signup-link').on('click', function(e){
   });
 });
 
-// move to user profile page single pagey
-$('.user-profile-page').on('click', function(e){
-  e.preventDefault();
-})
 
 
 
