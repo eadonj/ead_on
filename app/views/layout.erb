@@ -36,7 +36,7 @@
   </div>
 </div>
   <div class="page-container">
-    <div class="messages"></div>
+    <div class="messages"><% if @message %><%= @message %><% end %></div>
     <%= yield %>
   </div>
 </body>

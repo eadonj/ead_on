@@ -10,7 +10,7 @@ $(".url_form").on("submit", function(e){
     $(".url_container").empty();
     if(response == 'This is an error message')
     {
-     $(".url_container").append(response); 
+     $(".url_container").append(response);
     } else
     {
       $(".url_container").append('http://localhost:9393/urls/' + response['url']['shortened_url']);
@@ -19,17 +19,18 @@ $(".url_form").on("submit", function(e){
 }); // for form
 
 // auto newsfeed
-// setInterval(function() {
-//  $.ajax({
-//    method: "get",
-//    url: '/urls',
-//  }).success(function(response){
-//  var results = response;
-//  for (var i in results) {
-//    $('.newsfeed').append('<li>' + '<a href="http://localhost:9393/posts/' + results[i]['url']['shortened_url'] + '/">' + results[i]['url']['shortened_url'] + '</a>')
-//  }
-//  });
-// }, 2000);
+setInterval(function() {
+ $.ajax({
+   method: "get",
+   url: '/urls',
+ }).success(function(response){
+  $('.newsfeed').children().remove();
+ var results = response;
+ for (var i in results) {
+   $('.newsfeed').append('<li>' + '<a href="http://localhost:9393/posts/' + results[i]['url']['shortened_url'] + '/">' + results[i]['url']['shortened_url'] + '</a>')
+ }
+ });
+}, 2000);
 
 // go to log in single pagey
 $('.login-link').on('click', function(e){
@@ -50,19 +51,13 @@ $('.login-form').on('submit', function(e){
   var request = $.ajax({
     method: 'post',
     url: '/login',
-    data: $(this).serialize(),
-    fail: (function(){
-      $('.navbar').remove();
-      $('.page-container').replaceWith(response);
-      $('.messages').append('Sorry something went wrong');
-    })
+    data: $(this).serialize()
   }).success(function(response){
     $('.navbar').remove();
     $('.page-container').replaceWith(response);
-    $('.messages').append('Welcome back!');
     $('.messages').fadeOut(2000);
     }
-    );
+  );
 });
 
 // log out single pagey

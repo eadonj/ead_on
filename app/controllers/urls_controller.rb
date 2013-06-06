@@ -19,7 +19,7 @@ end
 
 get '/urls' do 
   content_type :json
-  Url.all.to_json
+  Url.all.reverse.to_json
 end
 
 get '/urls/:short_url' do

@@ -1,4 +1,4 @@
-require 'open-uri'
+require 'uri'
 require 'net/http'
 require 'debugger'
 
@@ -8,9 +8,9 @@ class Url < ActiveRecord::Base
   attr_accessible :original_url
   
   # validates :original_url, :with => :valid_url?
-  # validate :original_url, :if => :valid_url?
+  validate :original_url, :if => :valid_url?
   validates :original_url, :presence => true
-  before_create :set_click_count, :shorten
+  before_create :valid_url?, :set_click_count, :shorten
 
   def self.update_count(shortened_url)
     url = Url.find_by_shortened_url(shortened_url)
@@ -27,15 +27,9 @@ class Url < ActiveRecord::Base
   end
 
   def valid_url?
-    begin 
-      response = open(self.original_url)
-      debugger
-      puts response
-    rescue Exception => e
-      e.message
-    end
-    return true if response
-    return false
+    URI.parse(self)
+  rescue URI::InvalidURIError
+    false
   end
 
   def is_unique?(shortened)
