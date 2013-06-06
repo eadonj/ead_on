@@ -1,5 +1,11 @@
-<form action="/login" method="post">
-  <input type="text" name="user[email]">
-  <input type="password" name="user[password]">
-  <input type="submit" value="create ditty manager">
-</form>
+<div class="form-container">
+  <h1>Sign In</h1>
+    <form class="login-form" action="/login" method="post">
+      <fieldset>
+      <label>Email</label>
+      <input type="text" name="user[email]"><br/>
+      <label>Password</label>
+      <input type="password" name="user[password]"><br/>
+      <input type="submit" class="btn btn-large btn-primary" value="Sign Me In!">
+  </form>
+</div>

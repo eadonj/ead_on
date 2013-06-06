@@ -11,6 +11,7 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
@@ -20,13 +21,23 @@
   <title></title>
 </head>
 <body>
-  <a href='/'>home</a>
-  <% unless authenticated? %>
-    <a href='/login'>login</a>
-  <% end %>
-  <% unless request.path_info == '/users/new' || authenticated? %>
-      <a href='/users/new'>signup</a>
-  <% end %>
-  <%= yield %>
+  <div class="navbar navbar-static-top">
+  <div class="navbar-inner">
+    <a class="brand" href='/'>Ead.On</a>
+    <ul class="nav">
+      <% if authenticated? %>
+      <li><a class="user-profile-page" href="/users/<%= current_user.id %>">My Profile</a></li>
+      <li><a class="logout" href="/logout">Log Out</a></li> 
+      <% else %>
+      <li><a class="login-link" href="/login">Log In</a></li>
+      <li><a class="signup-link" href="/users/new">Sign Up</a></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+  <div class="page-container">
+    <div class="messages"></div>
+    <%= yield %>
+  </div>
 </body>
 </html>

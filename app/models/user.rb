@@ -3,6 +3,7 @@ require 'debugger'
 
 class User < ActiveRecord::Base
   include BCrypt
+  has_many :urls
 
   validates :email, :uniqueness => true
   validates :email, :presence => true
