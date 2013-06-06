@@ -1,9 +1,147 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
+#container{
+  font-family: 'Ubuntu', sans-serif;;
+}
+
+#home{
 
 }
-th {
-  text-align: left;
+
+#header{
+  width: 100%;
+  background-color: #fd6e6e;
+  color: #e5e5e5;
+  height: 65px;
+  position:fixed;
+  /*box-shadow: 1px 1px 7px #888888;*/
+}
+
+.nav_buttons{
+  border: 1px solid #f4f4f4;
+  width: 5.5em;
+  height: 1.6em;
+  border-radius: 5px;
+  display: block-inline;
+  float: right;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin: 13px 10px 0px 0px;
+  padding-top: 7px;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+}
+
+.nav_buttons:hover{
+  background-color: #5b5e71;
+}
+#home_button{
+
+}
+
+#login_button{
+
+}
+
+#signup{
+
+}
+
+#profile{
+
+}
+
+#logout{
+
+}
+/* index.erb section */
+
+#top_section{
+
+}
+
+.section1{
+  width: 100%;
+  height: 900px;
+  padding-top: 65px;
+  background-image: url('/../img/bg.png');
+}
+
+.header_text{
+  color: white;
+  font-size: 55px;
+  font-weight: 300;
+}
+
+.logo{
+  padding: 37px 0px 0px 37px;
+  font-weight: 400;
+}
+
+.title_text{
+  width: 100%;
+  margin: 150px 0px 50px 0px;
+  text-align: center;
+  color: #fff;
+}
+
+/*search bar */
+
+#search_bar{
+
+  text-align: center;
+  height: 67px;
+
+}
+
+.url_form{
+  height: 67px;
+
+}
+
+#url_input{
+  height: 65px;
+  width: 280px;
+  border-radius: 4px 0px 0px 4px;
+  border-style: none;
+  background-color: #e5e5e5;
+  font-size: 15px;
+  padding-left: 20px;
+}
+
+#url_input:focus{
+  background-color: #fff;
+  border-color: #e5e5e5;
+  outline:none;
+}
+
+button{
+  height: 67px;
+  width: 103px;
+  background-color: #fd6e6e;
+  border-style: none;
+  color: #fff;
+  border-radius: 0px 4px 4px 0px;
+  /*text-shadow: 0 -40 0 :fff;*/
+  margin-left: -4px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor:pointer;
+}
+
+button:hover{
+  background-color: #e66060;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+}
+
+button:active{
+  background-color: #fd6e6e;
+}
+
+.section2{
+  background-color: #F2F2F2;
+  width: 100%;
+  height: 750px;
 }

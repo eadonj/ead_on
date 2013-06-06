@@ -1,0 +1,18 @@
+
+<div>
+  <% if logged_in? %>
+    <%= @current_user.email %>
+    <% urls2 = @current_user.urls%>
+    <% urls2.each do |url| %>
+
+    <table>
+      <tr> 
+        <td> <%= url[:original_url]  %> </td>
+        <td> <%= url[:shortened_url] %> </td>
+        <td> <%= url[:click_count]   %> </td>
+      </tr>
+    </table>
+    
+    <% end %>
+  <% end %>
+</div>

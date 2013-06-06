@@ -1,13 +1,6 @@
 $(document).ready(function() {
 
 
-  // $("#url_input").keyup(_.debounce(function(){
-  //   $.ajax({
-  //     method: "GET",
-  //     url: 'http://' + $("#url_input").val()
-  //   });
-  // }));
-
  $(".url_form").on("submit", function(e){
     e.preventDefault();
     var request = $.ajax({
@@ -25,4 +18,7 @@ $(document).ready(function() {
       }
     }); //for done
   }); // for form
+
+
+ 
 }); // for document ready

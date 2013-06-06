@@ -2,6 +2,8 @@ require 'bcrypt'
 require 'debugger'
 
 class User < ActiveRecord::Base
+  has_many :urls
+  
   include BCrypt
 
   validates :email, :uniqueness => true

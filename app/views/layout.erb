@@ -11,8 +11,9 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
-
+  <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
   <script src="/js/application.js"></script>
 
@@ -20,13 +21,23 @@
   <title></title>
 </head>
 <body>
-  <a href='/'>home</a>
-  <% unless authenticated? %>
-    <a href='/login'>login</a>
-  <% end %>
-  <% unless request.path_info == '/users/new' || authenticated? %>
-      <a href='/users/new'>signup</a>
-  <% end %>
-  <%= yield %>
+  <div id="container">
+    <div id="home">
+      <nav id="header">
+      <a id="home_button" href='/'><div class="nav_buttons">Home</div></a>
+      <% unless logged_in? %>
+        <a id="login_button" href='/login'><div class="nav_buttons">Login</div></a>
+      <% end %>
+      <% unless request.path_info == '/users/new' || logged_in? %>
+        <a id="signup" href='/users/new'><div class="nav_buttons">Signup</div></a>
+      <% end %>
+      <% if logged_in? %>
+        <a id="profile" href='/users/<%=@current_user.id%>'><div class="nav_buttons">Profile</div></a>
+        <a id="logout" href='/logout'><div class="nav_buttons">Logout</div></a>
+      <% end %>
+    </div>
+      <%= yield %>
+
+  </div>
 </body>
 </html>
