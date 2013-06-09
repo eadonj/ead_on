@@ -2,7 +2,6 @@
   <div class="section1">
     <div class="header_text">
       <div class="logo">
-        Ead.On
       </div>
       <div class="title_text">
         URLs shorter than Tyrion</br>
@@ -12,18 +11,22 @@
     <div id="search_bar">
       <form class="url_form">
         <input id="url_input" type="text" name="url[original_url]" placeholder="http://uh-huh">
-        <!-- <input id="search_button" type="submit"> -->
         <button type="submit">ditty it</button>
       </form>
+    </div>
+    <div id="results">
     </div>
   </div>
 </div>   <!-- closing home div -->
 </section>
 
-<section id="response">
-  <div class="section2">
-  </div>
-</section>
-
+<% if logged_in? %>
+  <section id="response">
+    <div class="section2">
+      <%= erb(:_profile, :layout => false) %>
+      <%= erb(:_user_profile, :layout => false) %>
+    </div>
+  </section>
+<% end %>
 <article>
 </article>

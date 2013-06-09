@@ -1,0 +1,31 @@
+
+<div class="profile">
+  <% if logged_in? %>
+    <div id="profile_name"><%= @current_user.name || @current_user.email %>
+    </div>
+
+    <table id="table_profile">
+     <thead>
+      <tr>
+        <td>shortened</br> linked</td>
+        <td>click count</td>
+        <td>original</td>
+      </tr>
+    </thead>
+    <% urls2 = @current_user.urls%>
+    <% urls2.sort_by!{|url| url.click_count}.reverse! %>
+    <% urls2.each do |url| %>
+
+    <tr>
+       
+        <td> <a href="/urls/<%= url[:shortened_url] %>">urls/<%=url[:shortened_url]%></a> </td>
+        <td> <%= url[:click_count]   %> </td>
+         <td> <%= url[:original_url]  %> </td>
+    </tr>
+    <% end %>
+  
+    </table>
+    
+
+  <% end %>
+</div>

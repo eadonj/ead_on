@@ -12,12 +12,11 @@ class User < ActiveRecord::Base
   validates :password, :length => {:minimum => 6 }
   before_create :encrypt
 
-  private
 
-  def self.authenticate(email, password)
-    user = User.find_by_email(email)
+  def self.authenticate(params)
+    user = User.find_by_email(params[:email])
     db_pass = Password.new(user.password)
-    db_pass == password
+    db_pass == params[:password]
   end
 
   def encrypt

@@ -2,10 +2,12 @@
 post '/urls' do
   content_type :json
   url = Url.new(params[:url])
+  p url
   if url.valid?
     url = Url.create(params[:url])
     url.user = current_user if current_user
     url.save
+    p url
   else
     url = "This is an error message"
   end

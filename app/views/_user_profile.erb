@@ -1,0 +1,13 @@
+
+<% curr_user = current_user if logged_in? %>
+<% name = curr_user.name unless curr_user.name == "" %>
+<% name = "enter name" if name.blank? %>
+<div id="user_profile">
+	<div id="user_info">User Information</div>
+	<form id="profile" action="/users/edit" method="post">
+		<input type="hidden" name="id" value="<%=curr_user.id%>">
+	  <input type="name" name="user[name]" value="<%=name%>">
+	  <input type="name" name="user[email]" value="<%=curr_user.email%>">
+	  <button id="form_button" type="submit">Update</button>
+	</form>
+</div>
